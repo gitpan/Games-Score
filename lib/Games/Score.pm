@@ -10,7 +10,7 @@ Games::Score - Keep track of score in games
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -51,7 +51,7 @@ testing values to see if they're valid or if the player condition has changed.
 
 =head2 BASIC METHODS
 
-=head3 new()
+=head3 new
 
   new();
   new(PLAYERNAME);
@@ -81,7 +81,7 @@ sub new {
 
 =head2 VICTORY AND DEFEAT METHODS
 
-=head3 victory_is();
+=head3 victory_is
 
   victory_is(CODE)
 
@@ -111,7 +111,7 @@ sub victory_is {
   $victory_is = shift;
 }
 
-=head3 defeat_is()
+=head3 defeat_is
 
   defeat_is(CODE);
 
@@ -140,7 +140,7 @@ sub defeat_is {
   $defeat_is = shift;
 }
 
-=head3 on_victory_do()
+=head3 on_victory_do
 
   on_victory_do(CODE);
 
@@ -173,7 +173,7 @@ sub on_victory_do {
   $on_victory_do = shift;
 }
 
-=head3 on_defeat_do()
+=head3 on_defeat_do
 
   on_defeat_do(CODE);
 
@@ -206,7 +206,7 @@ sub on_defeat_do {
   $on_defeat_do = shift;
 }
 
-=head3 has_won()
+=head3 has_won
 
   has_won();
 
@@ -223,7 +223,7 @@ sub has_won {
   &{$victory_is}($self->score(), $self->name());
 }
 
-=head3 has_lost()
+=head3 has_lost
 
   has_lost();
 
@@ -240,7 +240,7 @@ sub has_lost {
   &{$defeat_is}($self->score(), $self->name());
 }
 
-=head3 is_ok()
+=head3 is_ok
 
   is_ok();
 
@@ -261,7 +261,7 @@ sub is_ok {
 
 =head2 SCORE METHODS
 
-=head3 add()
+=head3 add
 
   add(NUMBER);
   add(NUMBER, NUMBER, ...);
@@ -288,7 +288,7 @@ sub add {
   $self->score();
 }
 
-=head3 subtract()
+=head3 subtract
 
   subtract(NUMBER);
   subtract(NUMBER, NUMBER, ...);
@@ -315,7 +315,7 @@ sub subtract {
   $self->score();
 }
 
-=head3 invalidate_if()
+=head3 invalidate_if
 
   invalidate_if(CODE);
 
@@ -364,7 +364,7 @@ sub invalidate_if {
   $invalidate_if = shift;
 }
 
-=head3 step_method()
+=head3 step_method
 
   step_method();
   step_method('inc');
@@ -398,7 +398,7 @@ sub step_method {
   $step_method;
 }
 
-=head3 default_step()
+=head3 default_step
 
   default_step();
   default_step(NUMBER);
@@ -427,7 +427,7 @@ sub default_step {
   return $default_step;
 }
 
-=head3 step()
+=head3 step
 
   step();
   step(NUMBER);
@@ -456,7 +456,7 @@ sub step {
   $self->score();
 }
 
-=head3 default_score()
+=head3 default_score
 
   default_score();
   default_score(NUMBER);
@@ -482,7 +482,7 @@ sub default_score {
   $default_score;
 }
 
-=head3 priority_is()
+=head3 priority_is
 
   priority_is();
   priority_is('win');
@@ -543,7 +543,7 @@ sub priority_is {
   $priority;
 }
 
-=head3 score()
+=head3 score
 
   score();
   score(NUMBER);
@@ -561,7 +561,7 @@ one. Default score is 0.
 
 =cut
 
-sub score {
+sub score { # this should change, but it will have to do for now
   my $self = shift;
 
   for (@_) {
@@ -608,7 +608,7 @@ sub score {
 
 =head2 OTHER METHODS
 
-=head3 default_name()
+=head3 default_name
 
   default_name();
   default_name(DEFAULT_NAME);
@@ -637,7 +637,7 @@ sub default_name {
   $default_name;
 }
 
-=head3 name()
+=head3 name
 
   name();
   name(NEW_NAME);
